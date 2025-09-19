@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 export default function LetterSpace({ letraOriginal, letraEnviada, acertosLetras }) {
-  const [letra, setLetra] = useState("_");
-
-  useEffect(() => {
-    if (acertosLetras.includes(letraOriginal.toUpperCase())) {
-      setLetra(letraOriginal.toUpperCase());
-    }
-  }, [acertosLetras]);
+  const mostrarLetra = acertosLetras.includes(letraOriginal.toUpperCase());
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{letra}</Text>
+      <Text style={styles.text}>{mostrarLetra ? letraOriginal.toUpperCase() : "_"}</Text>
     </View>
   );
 }
